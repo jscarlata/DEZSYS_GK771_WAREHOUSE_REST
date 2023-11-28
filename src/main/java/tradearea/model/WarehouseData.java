@@ -2,12 +2,50 @@ package tradearea.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class WarehouseData {
 	
 	private String warehouseID;
 	private String warehouseName;
 	private String timestamp;
+	private List<Product> productData;
+	private String warehouseAddress;
+	private String warehousePostalCode;
+	private String warehouseCity;
+	private String warehouseCountry;
+
+	public String getWarehouseAddress() {
+		return warehouseAddress;
+	}
+
+	public void setWarehouseAddress(String warehouseAddress) {
+		this.warehouseAddress = warehouseAddress;
+	}
+
+	public String getWarehousePostalCode() {
+		return warehousePostalCode;
+	}
+
+	public void setWarehousePostalCode(String warehousePostalCode) {
+		this.warehousePostalCode = warehousePostalCode;
+	}
+
+	public String getWarehouseCity() {
+		return warehouseCity;
+	}
+
+	public void setWarehouseCity(String warehouseCity) {
+		this.warehouseCity = warehouseCity;
+	}
+
+	public String getWarehouseCountry() {
+		return warehouseCountry;
+	}
+
+	public void setWarehouseCountry(String warehouseCountry) {
+		this.warehouseCountry = warehouseCountry;
+	}
 
 	/**
 	 * Constructor
@@ -21,6 +59,15 @@ public class WarehouseData {
 	/**
 	 * Setter and Getter Methods
 	 */
+
+	public List<Product> getProductData() {
+        return productData;
+    }
+
+    public void setProductData(List<Product> productData) {
+        this.productData = productData;
+    }
+
 	public String getWarehouseID() {
 		return warehouseID;
 	}

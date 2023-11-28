@@ -1,5 +1,6 @@
 package tradearea.warehouse;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.MediaType;
 
 import tradearea.model.WarehouseData;
+
+import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTMLDocument;
 
 @RestController
 public class WarehouseController {
@@ -23,6 +27,7 @@ public class WarehouseController {
         return mainPage;
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000","http://localhost:8080"})
     @RequestMapping(value="/warehouse/{inID}/data", produces = MediaType.APPLICATION_JSON_VALUE)
     public WarehouseData warehouseData( @PathVariable String inID ) {
         return service.getWarehouseData( inID );
