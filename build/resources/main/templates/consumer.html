@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://localhost:8080/warehouse/001/data"
+        }).then(function(data) {
+            // Create table header
+            var table = $('<table>').append('<tr><th>Product ID</th><th>Product Name</th><th>Product Category</th><th>Product Quantity</th><th>Product Unit</th></tr>');
+            // Add each product as a new row
+            $.each(data.products, function(i, product) {
+                var row = $('<tr>').append(
+                    $('<td>').text(product.productID),
+                    $('<td>').text(product.productName),
+                    $('<td>').text(product.productCategory),
+                    $('<td>').text(product.productQuantity),
+                    $('<td>').text(product.productUnit)
+                );
+                table.append(row);
+            });
+            // Add the table to the body
+            $('body').append(table);
+        });
+
+        // Filter function
+        $('#filter').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            $('table tr').each(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+<body>
+<input id="filter" type="text" placeholder="Filter">
+</body>
+</html>
